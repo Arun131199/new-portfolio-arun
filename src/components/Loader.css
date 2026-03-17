@@ -14,33 +14,37 @@
 .loader__bg {
   position: absolute;
   inset: 0;
-  background: #0a0f0a;
+  background: radial-gradient(circle at center, #0f1f14 0%, #050805 100%);
   z-index: -1;
 }
 
 .loader__name {
   display: flex;
   gap: 4px;
+  opacity: 1;
 }
 
 .loader__letter {
-  font-family: 'Roboto', sans-serif;
-  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
   font-weight: 900;
   color: #fff;
   line-height: 1;
+  opacity: 1 !important;
   display: inline-block;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
 }
 
 .loader__letter:last-child {
   color: #22c55e;
+  text-shadow: 0 0 15px rgba(34, 197, 94, 0.8);
 }
 
 .loader__role {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 13px;
-  font-weight: 400;
-  color: #555;
+  font-weight: 500;
+  color: #e5e7eb;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
@@ -63,7 +67,7 @@
 }
 
 .loader__percent {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   font-weight: 700;
   color: #22c55e;
@@ -84,4 +88,14 @@
   height: 4px;
   border-radius: 50%;
   background: rgba(34, 197, 94, 0.25);
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.25), transparent);
+  filter: blur(50px);
+  z-index: -1;
 }

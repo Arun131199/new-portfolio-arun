@@ -48,6 +48,8 @@ function Loader({ onComplete }) {
             },
             0
         )
+
+        tl.set('.loader__letter', { opacity: 1 }) 
         tl.to(
             loaderRef.current,
             {

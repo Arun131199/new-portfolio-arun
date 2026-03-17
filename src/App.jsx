@@ -35,9 +35,11 @@ function App() {
 
   return (
     <>
-      {loading && <Loader onComplete={() => setLoading(false)} />}
-      {
-        !loading && (
+      return (
+      <>
+        {loading ? (
+          <Loader onComplete={() => setLoading(false)} />
+        ) : (
           <Suspense fallback={<Loader />}>
             <TopBar />
             <Navbar />
@@ -49,8 +51,9 @@ function App() {
             <CtaBand />
             <Footer />
           </Suspense>
-        )
-      }
+        )}
+      </>
+      )
     </>
   )
 }

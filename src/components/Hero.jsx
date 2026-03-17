@@ -4,16 +4,16 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, OrbitControls, ContactShadows } from '@react-three/drei'
 import './Hero.css'
 
-// ── 3D Model ───────────────────────────────────────────────
+
 function CoolMan() {
   const { scene } = useGLTF('/cool_man.glb')
   const modelRef = useRef()
 
   useFrame((state) => {
     if (!modelRef.current) return
-    // Floating animation
+
     modelRef.current.position.y = -1.0 + Math.sin(state.clock.elapsedTime * 0.8) * 0.08
-    // Slow rotation
+
     modelRef.current.rotation.y += 0.003
   })
 
@@ -26,8 +26,6 @@ function CoolMan() {
     />
   )
 }
-
-// Loading fallback — spinning torus
 function Loader() {
   const ref = useRef()
   useFrame(() => {
@@ -44,7 +42,6 @@ function Loader() {
   )
 }
 
-// ── Canvas ─────────────────────────────────────────────────
 function ModelCanvas() {
   return (
     <Canvas
@@ -53,7 +50,6 @@ function ModelCanvas() {
       dpr={[1, 2]}
       style={{ width: '100%', height: '100%' }}
     >
-      {/* Bright white + green tinted lights so model is clearly visible */}
       <ambientLight intensity={2.0} color="#ffffff" />
       <directionalLight position={[5, 8, 5]} intensity={3.0} color="#ffffff" />
       <directionalLight position={[-4, 4, -3]} intensity={1.0} color="#aaffaa" />
@@ -82,15 +78,14 @@ function ModelCanvas() {
   )
 }
 
-// ── Hero Section ───────────────────────────────────────────
+
 function Hero() {
   const rightRef = useRef(null)
 
   useEffect(() => {
-    // FIX: Use fromTo so elements are never stuck at opacity:0
-    // Set visible first as fallback, then animate
+
     const els = ['.hero__eyebrow', '.hero__title', '.hero__desc', '.hero__btns', '.hero__stats-row']
-    gsap.set(els, { opacity: 1, y: 0 }) // safe default
+    gsap.set(els, { opacity: 1, y: 0 })
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
     tl.fromTo('.hero__eyebrow',
@@ -112,7 +107,6 @@ function Hero() {
       )
     }
 
-    // Mouse parallax
     const onMouse = (e) => {
       if (!rightRef.current) return
       const mx = (e.clientX / window.innerWidth - 0.5) * 18
@@ -133,7 +127,6 @@ function Hero() {
       <div className="hero__grid" />
       <div className="hero__glow" />
 
-      {/* ── Left: text ── */}
       <div className="hero__left">
         <p className="hero__eyebrow">Hello, I'm a Frontend Developer</p>
 
@@ -185,7 +178,6 @@ function Hero() {
         </div>
       </div>
 
-      {/* ── Right: 3D model ── */}
       <div className="hero__right" ref={rightRef}>
         <div className="hero__badge">
           <span className="hero__badge-star">✦</span>

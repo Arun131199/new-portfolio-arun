@@ -35,25 +35,21 @@ function App() {
 
   return (
     <>
-      return (
-      <>
-        {loading ? (
-          <Loader onComplete={() => setLoading(false)} />
-        ) : (
-          <Suspense fallback={<Loader />}>
-            <TopBar />
-            <Navbar />
-            <Hero />
-            <Specialities />
-            <WorkProcess />
-            <Projects />
-            <Testimonial />
-            <CtaBand />
-            <Footer />
-          </Suspense>
-        )}
-      </>
-      )
+      {loading ? (
+        <Loader onComplete={() => setLoading(false)} />
+      ) : (
+        <Suspense fallback={<Loader />}>
+          <TopBar />
+          <Navbar />
+          <Hero />
+          <Specialities />
+          <WorkProcess />
+          <Projects />
+          <Testimonial />
+          <CtaBand />
+          <Footer />
+        </Suspense>
+      )}
     </>
   )
 }

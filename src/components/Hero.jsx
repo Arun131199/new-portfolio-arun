@@ -19,8 +19,8 @@ function CoolMan() {
     <primitive
       ref={modelRef}
       object={scene}
-      scale={1.3}
-      position={[0, -1, 0]}
+      scale={1.1}
+      position={[0, -0.6, 0]}
     />
   )
 }
@@ -43,7 +43,7 @@ function Loader() {
 function ModelCanvas() {
   return (
     <Canvas
-      camera={{ position: [0, 1.0, 4.2], fov: 42 }}
+      camera={{ position: [0, 1.2, 5.2], fov: 45 }}
       gl={{ antialias: true, alpha: true }}
       dpr={[1, 2]}
       style={{ width: '100%', height: '100%' }}
@@ -69,8 +69,8 @@ function ModelCanvas() {
       <OrbitControls
         enableZoom={false}
         enablePan={false}
-        minPolarAngle={Math.PI / 3.5}
-        maxPolarAngle={Math.PI / 1.9}
+        minDistance={4}
+        maxDistance={6}
       />
     </Canvas>
   )

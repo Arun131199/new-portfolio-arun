@@ -1,0 +1,87 @@
+/* Loader.css */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  overflow: hidden;
+}
+
+.loader__bg {
+  position: absolute;
+  inset: 0;
+  background: #0a0f0a;
+  z-index: -1;
+}
+
+.loader__name {
+  display: flex;
+  gap: 4px;
+}
+
+.loader__letter {
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  display: inline-block;
+}
+
+.loader__letter:last-child {
+  color: #22c55e;
+}
+
+.loader__role {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.loader__bar-wrap {
+  width: clamp(220px, 40vw, 360px);
+  height: 2px;
+  background: #1a1a1a;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.loader__bar {
+  height: 100%;
+  width: 0%;
+  background: #22c55e;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+}
+
+.loader__percent {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #22c55e;
+  letter-spacing: 1px;
+}
+
+.loader__dots {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 3rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+
+.loader__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.25);
+}

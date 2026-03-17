@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import './WorkProcess.css'
 
 const STEPS = [
@@ -8,8 +9,34 @@ const STEPS = [
 ]
 
 function WorkProcess() {
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const cards = sectionRef.current?.querySelectorAll('.fade-up')
+      if (!cards?.length) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible')
+              observer.unobserve(entry.target)
+            }
+          })
+        },
+        { threshold: 0.1 }
+      )
+
+      cards.forEach((el) => observer.observe(el))
+      return () => observer.disconnect()
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <section id="process" className="section">
+    <section id="process" className="section" ref={sectionRef}>
       <div className="sec-eyebrow">About Me</div>
       <div className="sec-title">My <span>work process</span></div>
       <div className="sec-line" />

@@ -1,19 +1,21 @@
-import { useEffect } from 'react'
-import TopBar from './components/TopBar'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Specialities from './components/Specialities'
-import WorkProcess from './components/WorkProcess'
-import Projects from './components/Projects'
-import Testimonial from './components/Testimonial'
-import CtaBand from './components/CtaBand'
-import Footer from './components/Footer'
+import { lazy, Suspense, useEffect, useState } from 'react'
+import Loader from './components/Loader'
 
-// Resume file: place your resume at /public/Arunkumar_Resume.docx
+const TopBar = lazy(() => import("./components/TopBar"))
+const Navbar = lazy(() => import("./components/Navbar"))
+const Hero = lazy(() => import("./components/Hero"))
+const Specialities = lazy(() => import("./components/Specialities"))
+const WorkProcess = lazy(() => import("./components/WorkProcess"))
+const Projects = lazy(() => import("./components/Projects"))
+const Testimonial = lazy(() => import("./components/Testimonial"))
+const CtaBand = lazy(() => import("./components/CtaBand"))
+const Footer = lazy(() => import("./components/Footer"))
+
 export const RESUME_URL = '/Arunkumar_Resume.docx'
 
 function App() {
-  // Scroll-triggered fade-up for .fade-up elements
+
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const els = document.querySelectorAll('.fade-up')
     const observer = new IntersectionObserver(
@@ -33,15 +35,22 @@ function App() {
 
   return (
     <>
-      <TopBar />
-      <Navbar />
-      <Hero />
-      <Specialities />
-      <WorkProcess />
-      <Projects />
-      <Testimonial />
-      <CtaBand />
-      <Footer />
+      {loading && <Loader onComplete={() => setLoading(false)} />}
+      {
+        !loading && (
+          <Suspense fallback={<Loader />}>
+            <TopBar />
+            <Navbar />
+            <Hero />
+            <Specialities />
+            <WorkProcess />
+            <Projects />
+            <Testimonial />
+            <CtaBand />
+            <Footer />
+          </Suspense>
+        )
+      }
     </>
   )
 }

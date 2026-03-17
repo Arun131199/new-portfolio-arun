@@ -1,10 +1,11 @@
+import { useEffect, useRef } from 'react'
 import './Specialities.css'
 
 const SPECS = [
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
       </svg>
     ),
     name: 'React.js Development',
@@ -13,8 +14,9 @@ const SPECS = [
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="2" y="3" width="20" height="14" rx="2"/>
-        <line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
       </svg>
     ),
     name: 'Responsive UI Design',
@@ -23,7 +25,7 @@ const SPECS = [
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
       </svg>
     ),
     name: 'REST API Integration',
@@ -32,7 +34,7 @@ const SPECS = [
   {
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
       </svg>
     ),
     name: 'Testing & Quality',
@@ -41,8 +43,35 @@ const SPECS = [
 ]
 
 function Specialities() {
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    // Small delay ensures DOM is painted after lazy load
+    const timer = setTimeout(() => {
+      const cards = sectionRef.current?.querySelectorAll('.fade-up')
+      if (!cards?.length) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible')
+              observer.unobserve(entry.target)
+            }
+          })
+        },
+        { threshold: 0.1 }
+      )
+
+      cards.forEach((el) => observer.observe(el))
+      return () => observer.disconnect()
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <section id="specialities" className="section section--alt">
+    <section id="specialities" className="section section--alt" ref={sectionRef}>
       <div className="sec-eyebrow">Speciality</div>
       <div className="sec-title">My <span>specialities</span></div>
       <div className="sec-line" />

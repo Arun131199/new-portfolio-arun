@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import './Projects.css'
 
 const PROJECTS = [
@@ -25,8 +26,34 @@ const PROJECTS = [
 ]
 
 function Projects() {
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const cards = sectionRef.current?.querySelectorAll('.fade-up')
+      if (!cards?.length) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible')
+              observer.unobserve(entry.target)
+            }
+          })
+        },
+        { threshold: 0.1 }
+      )
+
+      cards.forEach((el) => observer.observe(el))
+      return () => observer.disconnect()
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <section id="projects" className="section section--alt">
+    <section id="projects" className="section section--alt" ref={sectionRef}>
       <div className="sec-eyebrow">Portfolio</div>
       <div className="sec-title">My <span>projects</span></div>
       <div className="sec-line" />

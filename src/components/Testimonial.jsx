@@ -1,8 +1,35 @@
+import { useEffect, useRef } from 'react'
 import './Testimonial.css'
 
 function Testimonial() {
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const cards = sectionRef.current?.querySelectorAll('.fade-up')
+      if (!cards?.length) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible')
+              observer.unobserve(entry.target)
+            }
+          })
+        },
+        { threshold: 0.1 }
+      )
+
+      cards.forEach((el) => observer.observe(el))
+      return () => observer.disconnect()
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <section id="testimonial" className="section">
+    <section id="testimonial" className="section" ref={sectionRef}>
       <div className="sec-eyebrow">Reviews</div>
       <div className="sec-title">What they <span>say</span></div>
       <div className="sec-line" />

@@ -4,16 +4,14 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, OrbitControls, ContactShadows } from '@react-three/drei'
 import './Hero.css'
 
-
+const BASE = import.meta.env.BASE_URL
 function CoolMan() {
-  const { scene } = useGLTF(`${import.meta.env.BASE_URL}cool_man.glb`)
+  const { scene } = useGLTF(`${BASE}cool_man.glb`)  
   const modelRef = useRef()
 
   useFrame((state) => {
     if (!modelRef.current) return
-
     modelRef.current.position.y = -1.0 + Math.sin(state.clock.elapsedTime * 0.8) * 0.08
-
     modelRef.current.rotation.y += 0.003
   })
 
@@ -21,8 +19,8 @@ function CoolMan() {
     <primitive
       ref={modelRef}
       object={scene}
-      scale={1.4}
-      position={[0, -0.8, 0]}
+      scale={2.0}
+      position={[0, -1.0, 0]}
     />
   )
 }

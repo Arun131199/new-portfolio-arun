@@ -134,9 +134,8 @@ function Hero() {
         </h1>
 
         <p className="hero__desc">
-          Frontend Developer with 2+ years of experience building scalable,
-          high-performance React.js applications. Proficient in TypeScript,
-          Redux Toolkit, Material UI, and RESTful APIs.
+          Frontend Developer specializing in React.js, Three.js, and high-performance UI.
+          I build interactive web experiences with modern technologies and optimized performance.
         </p>
 
         <div className="hero__btns">

@@ -4,9 +4,9 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, OrbitControls, ContactShadows } from '@react-three/drei'
 import './Hero.css'
 
-const BASE = import.meta.env.BASE_URL
+
 function CoolMan() {
-  const { scene } = useGLTF(`${BASE}cool_man.glb`)  
+  const { scene } = useGLTF(`${import.meta.env.BASE_URL}models/cool_man.glb`)
   const modelRef = useRef()
 
   useFrame((state) => {
@@ -196,6 +196,6 @@ function Hero() {
   )
 }
 
-useGLTF.preload(`${import.meta.env.BASE_URL}cool_man.glb`)
+useGLTF.preload(`${import.meta.env.BASE_URL}models/cool_man.glb`)
 
 export default Hero

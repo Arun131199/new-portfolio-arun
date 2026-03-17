@@ -45,7 +45,7 @@ function App() {
       {loading && <Loader onComplete={() => setLoading(false)} />}
 
       <div style={{ visibility: loading ? 'hidden' : 'visible' }}>
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <TopBar />
           <Navbar />
           <Hero />

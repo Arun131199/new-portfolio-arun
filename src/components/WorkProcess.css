@@ -1,0 +1,24 @@
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+
+.process-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.8rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.process-card:hover { border-color: rgba(34,197,94,0.3); transform: translateY(-3px); }
+
+.process-card__num {
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgba(34,197,94,0.15);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.process-card__title { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+.process-card__desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }

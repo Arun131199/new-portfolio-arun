@@ -1,0 +1,113 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #22c55e;
+  --green-dark: #16a34a;
+  --green-dim: rgba(34, 197, 94, 0.12);
+  --bg: #0e0e0e;
+  --bg2: #141414;
+  --card: #1a1a1a;
+  --border: #2a2a2a;
+  --muted: #777;
+  --text: #e0e0e0;
+  --font: 'Roboto', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { font-family: var(--font); cursor: pointer; }
+
+/* Shared section styles */
+.section { padding: 70px 5vw; }
+.section--alt { background: var(--bg2); }
+
+.sec-eyebrow {
+  font-size: 11px;
+  color: var(--green);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.sec-title {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.sec-title span { color: var(--green); }
+
+.sec-line {
+  width: 40px;
+  height: 3px;
+  background: var(--green);
+  border-radius: 2px;
+  margin-bottom: 1.2rem;
+}
+
+.sec-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
+
+/* Scroll fade-up animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Shared button styles */
+.btn-primary {
+  background: var(--green);
+  color: #000;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 26px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+.btn-ghost {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--green); }
+.btn-ghost svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }

@@ -43,7 +43,7 @@ function Loader() {
 function ModelCanvas() {
   return (
     <Canvas
-      camera={{ position: [0, 1.2, 5.2], fov: 45 }}
+      camera={{ position: [0, 1.4, 5.2], fov: 45 }}
       gl={{ antialias: true, alpha: true }}
       dpr={[1, 2]}
       style={{ width: '100%', height: '100%' }}
@@ -58,7 +58,7 @@ function ModelCanvas() {
       <Suspense fallback={<Loader />}>
         <CoolMan />
         <ContactShadows
-          position={[0, -1.15, 0]}
+          position={[0, -1, 0]}
           opacity={0.45}
           scale={5}
           blur={2}

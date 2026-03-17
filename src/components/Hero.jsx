@@ -6,7 +6,7 @@ import './Hero.css'
 
 
 function CoolMan() {
-  const { scene } = useGLTF('/new-portfolio-arun/cool_man.glb')
+  const { scene } = useGLTF(`${import.meta.env.BASE_URL}cool_man.glb`)
   const modelRef = useRef()
 
   useFrame((state) => {
@@ -198,6 +198,6 @@ function Hero() {
   )
 }
 
-useGLTF.preload('/new-portfolio-arun/cool_man.glb')
+useGLTF.preload(`${import.meta.env.BASE_URL}cool_man.glb`)
 
 export default Hero

@@ -4,6 +4,8 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   base: "/new-portfolio-arun/",
+  assetsInclude: ["**/*.glb"],
+
   build: {
     outDir: "dist",
     chunkSizeWarningLimit: 2000,
@@ -17,5 +19,9 @@ export default defineConfig({
         },
       },
     },
+  },
+
+  optimizeDeps: {
+    include: ["three", "@react-three/fiber", "@react-three/drei"],
   },
 });

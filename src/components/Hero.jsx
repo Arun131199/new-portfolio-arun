@@ -19,8 +19,8 @@ function CoolMan() {
     <primitive
       ref={modelRef}
       object={scene}
-      scale={2.0}
-      position={[0, -1.0, 0]}
+      scale={1.3}
+      position={[0, -1, 0]}
     />
   )
 }
